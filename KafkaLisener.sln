@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaLisener", "src\KafkaLisener\KafkaLisener.csproj", "{D80B5C33-A435-4886-98B7-DED22E60C6C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C6D832E-33D0-4B15-B1A7-C5B8714C9238}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2DBD49C5-F53D-449C-A26D-652F211FF988}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D80B5C33-A435-4886-98B7-DED22E60C6C7} = {0C6D832E-33D0-4B15-B1A7-C5B8714C9238}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F881549-AF47-4D85-BBA8-DC3D933DA10B}
+	EndGlobalSection
+EndGlobal
