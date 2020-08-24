@@ -1,27 +1,27 @@
-﻿using System;
+﻿using Confluent.Kafka;
+using KafkaLisener.Infrastructure.Config;
+using KafkaLisener.Infrastructure.Repositories.Interface;
+using Microsoft.Extensions.Options;
+using System;
 using System.Threading;
-using Confluent.Kafka;
-using KafkaLisener.Domain.Listeners.Interface;
-using Microsoft.AspNetCore.Mvc;
 
-namespace KafkaLisener.Controllers
+namespace KafkaLisener.Infrastructure.Repositories
 {
-    [Produces("application/json")]
-    [Route("home")]
-    [ApiController]
-    public class HomeController : ControllerBase
+    public class Kafka: IKafka
     {
-        private IListenerKafka _listenerKafka;
-        public HomeController(IListenerKafka listenerKafka) => (_listenerKafka) = (listenerKafka);
+        private KafkaOptions _kafkaOptions { get; }
+        private Offset ConsumerOffset { get; set; }
 
-        [HttpGet("Get")]
-        public void Get()
+        public Kafka(IOptions<KafkaOptions> kafkaOptions)
         {
-            _listenerKafka.ListenMessage();
+            _kafkaOptions = kafkaOptions?.Value ?? throw new ArgumentNullException(nameof(kafkaOptions));
         }
 
-        public void Get2(string broker = "127.0.0.1", string topic = "quickstart-events-topic")//string brokerList, List<string> topics) //, CancellationToken cancellationToken)
+        public void GetMessage(string broker = null, string topic = null)
         {
+            broker = string.IsNullOrEmpty(broker) ? _kafkaOptions.Broker : broker;
+            topic = string.IsNullOrEmpty(topic) ? _kafkaOptions.Topic : topic;
+
             var config = new ConsumerConfig
             {
                 // the group.id property must be specified when creating a consumer, even 
@@ -41,7 +41,7 @@ namespace KafkaLisener.Controllers
                     .SetErrorHandler((_, e) => Console.WriteLine($"Error: {e.Reason}"))
                     .Build())
             {
-                consumer.Assign(new TopicPartitionOffset(topic, 0, Offset.Beginning));
+                consumer.Assign(new TopicPartitionOffset(topic, 0, ConsumerOffset != null ? ConsumerOffset : Offset.Beginning));
 
                 try
                 {
@@ -49,10 +49,11 @@ namespace KafkaLisener.Controllers
                     //{
                     try
                     {
-                        //consumeResult.Offset - 
+                        //consumeResult.Offset - session variable
 
                         var consumeResult = consumer.Consume(cts.Token);
                         Console.WriteLine($"Received message at {consumeResult.TopicPartitionOffset}: ${consumeResult.Message.Value}");
+                        ConsumerOffset = consumeResult.Offset;
                     }
                     catch (ConsumeException e)
                     {

@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaLisener.Domain", "src\KafkaLisener.Domain\KafkaLisener.Domain.csproj", "{AC466E82-8E5B-4F94-94FD-FE1171BCC71D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KafkaLisener.Infrastructure", "src\KafkaLisener.Infrastructure\KafkaLisener.Infrastructure.csproj", "{F968A4DF-66F9-448C-B264-8EAC2340EDBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9A3869F6-3E69-43E5-8A86-643EA27DA94F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,12 +28,22 @@ Global
 		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D80B5C33-A435-4886-98B7-DED22E60C6C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC466E82-8E5B-4F94-94FD-FE1171BCC71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC466E82-8E5B-4F94-94FD-FE1171BCC71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC466E82-8E5B-4F94-94FD-FE1171BCC71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC466E82-8E5B-4F94-94FD-FE1171BCC71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F968A4DF-66F9-448C-B264-8EAC2340EDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F968A4DF-66F9-448C-B264-8EAC2340EDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F968A4DF-66F9-448C-B264-8EAC2340EDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F968A4DF-66F9-448C-B264-8EAC2340EDBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D80B5C33-A435-4886-98B7-DED22E60C6C7} = {0C6D832E-33D0-4B15-B1A7-C5B8714C9238}
+		{AC466E82-8E5B-4F94-94FD-FE1171BCC71D} = {0C6D832E-33D0-4B15-B1A7-C5B8714C9238}
+		{F968A4DF-66F9-448C-B264-8EAC2340EDBB} = {0C6D832E-33D0-4B15-B1A7-C5B8714C9238}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F881549-AF47-4D85-BBA8-DC3D933DA10B}
