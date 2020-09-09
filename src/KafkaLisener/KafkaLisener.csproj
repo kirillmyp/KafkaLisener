@@ -13,5 +13,9 @@
     <ProjectReference Include="..\KafkaLisener.Infrastructure\KafkaLisener.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+
 
 </Project>

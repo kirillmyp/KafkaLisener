@@ -7,14 +7,14 @@ using System.Threading;
 
 namespace KafkaLisener.Infrastructure.Repositories
 {
-    public class Kafka: IKafka
+    public class Kafka : IKafka
     {
         private KafkaOptions _kafkaOptions { get; }
         private Offset ConsumerOffset { get; set; }
 
-        public Kafka(IOptions<KafkaOptions> kafkaOptions)
+        public Kafka(IOptions<AppSettingsOptions> appSettingsOptions)
         {
-            _kafkaOptions = kafkaOptions?.Value ?? throw new ArgumentNullException(nameof(kafkaOptions));
+            _kafkaOptions = appSettingsOptions?.Value?.KafkaOptions ?? throw new ArgumentNullException(nameof(appSettingsOptions));
         }
 
         public void GetMessage(string broker = null, string topic = null)
@@ -24,13 +24,9 @@ namespace KafkaLisener.Infrastructure.Repositories
 
             var config = new ConsumerConfig
             {
-                // the group.id property must be specified when creating a consumer, even 
-                // if you do not intend to use any consumer group functionality.
                 GroupId = new Guid().ToString(),
+                ClientId = topic,
                 BootstrapServers = broker,
-                // partition offsets can be committed to a group even by consumers not
-                // subscribed to the group. in this example, auto commit is disabled
-                // to prevent this from occurring.
                 EnableAutoCommit = true
             };
 
@@ -45,21 +41,21 @@ namespace KafkaLisener.Infrastructure.Repositories
 
                 try
                 {
-                    //while (true)
-                    //{
-                    try
+                    while (true)
                     {
-                        //consumeResult.Offset - session variable
+                        try
+                        {
+                            //consumeResult.Offset - session variable
 
-                        var consumeResult = consumer.Consume(cts.Token);
-                        Console.WriteLine($"Received message at {consumeResult.TopicPartitionOffset}: ${consumeResult.Message.Value}");
-                        ConsumerOffset = consumeResult.Offset;
+                            var consumeResult = consumer.Consume(cts.Token);
+                            Console.WriteLine($"Received message at {consumeResult.TopicPartitionOffset}: ${consumeResult.Message.Value}");
+                            ConsumerOffset = consumeResult.Offset;
+                        }
+                        catch (ConsumeException e)
+                        {
+                            Console.WriteLine($"Consume error: {e.Error.Reason}");
+                        }
                     }
-                    catch (ConsumeException e)
-                    {
-                        Console.WriteLine($"Consume error: {e.Error.Reason}");
-                    }
-                    //}
                 }
                 catch (OperationCanceledException)
                 {

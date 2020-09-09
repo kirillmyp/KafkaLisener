@@ -1,15 +1,14 @@
-﻿{
+{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "KafkaLisener (Dev)": {
+    "KafkaLisener (Local)": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "http://localhost:57711/health",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Local",
+        "SYSLOG_PORT": "601",
         "LOCAL": "true",
         "SERVICE_NAME": "CronKafka",
-        "SYSLOG_PORT": "601"
+        "ASPNETCORE_ENVIRONMENT": "Local"
       },
       "applicationUrl": "http://localhost:57711"
     }

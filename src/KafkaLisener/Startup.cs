@@ -1,6 +1,6 @@
-using KafkaLisener.Config;
 using KafkaLisener.Domain.Listeners;
 using KafkaLisener.Domain.Listeners.Interface;
+using KafkaLisener.Infrastructure.Config;
 using KafkaLisener.Infrastructure.Repositories;
 using KafkaLisener.Infrastructure.Repositories.Interface;
 using Microsoft.AspNetCore.Builder;

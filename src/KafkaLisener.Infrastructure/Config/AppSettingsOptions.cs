@@ -1,6 +1,4 @@
-﻿using KafkaLisener.Infrastructure.Config;
-
-namespace KafkaLisener.Config
+﻿namespace KafkaLisener.Infrastructure.Config
 {
     /// <summary>
     /// Configuration class with a structure that matches a configuration.
