@@ -7,7 +7,7 @@
       "environmentVariables": {
         "SYSLOG_PORT": "601",
         "LOCAL": "true",
-        "SERVICE_NAME": "CronKafka",
+        "SERVICE_NAME": "KafkaLisener",
         "ASPNETCORE_ENVIRONMENT": "Local"
       },
       "applicationUrl": "http://localhost:57711"
